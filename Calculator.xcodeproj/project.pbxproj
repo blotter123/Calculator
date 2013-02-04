@@ -16,6 +16,12 @@
 		AC63146116BECC5600ED25EF /* kindajean_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = AC63146016BECC5600ED25EF /* kindajean_@2X.png */; };
 		AC63146516BECE6D00ED25EF /* noisy_grid_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = AC63146416BECE6D00ED25EF /* noisy_grid_@2X.png */; };
 		AC63146716BED06000ED25EF /* bright_squares_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = AC63146616BED06000ED25EF /* bright_squares_@2X.png */; };
+		AC63146D16C0078900ED25EF /* WhiteCarbon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC63146C16C0078900ED25EF /* WhiteCarbon.jpg */; };
+		AC63147216C0145000ED25EF /* simpletexture.png in Resources */ = {isa = PBXBuildFile; fileRef = AC63147116C0145000ED25EF /* simpletexture.png */; };
+		AC63147816C064DE00ED25EF /* stoff.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC63147516C064DE00ED25EF /* stoff.jpg */; };
+		AC63147916C064DE00ED25EF /* wood.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC63147616C064DE00ED25EF /* wood.jpg */; };
+		AC63147A16C064DE00ED25EF /* tumblr.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC63147716C064DE00ED25EF /* tumblr.jpg */; };
+		AC63147C16C0665100ED25EF /* matt_shadow2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC63147B16C0665100ED25EF /* matt_shadow2.jpg */; };
 		ACBD11ED16A9F05B0049A569 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBD11EC16A9F05B0049A569 /* UIKit.framework */; };
 		ACBD11EF16A9F05B0049A569 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBD11EE16A9F05B0049A569 /* Foundation.framework */; };
 		ACBD11F116A9F05B0049A569 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBD11F016A9F05B0049A569 /* CoreGraphics.framework */; };
@@ -54,6 +60,12 @@
 		AC63146016BECC5600ED25EF /* kindajean_@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kindajean_@2X.png"; path = "../../Downloads/kindajean/kindajean_@2X.png"; sourceTree = "<group>"; };
 		AC63146416BECE6D00ED25EF /* noisy_grid_@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "noisy_grid_@2X.png"; path = "../../Desktop/noisy_grid_@2X.png"; sourceTree = "<group>"; };
 		AC63146616BED06000ED25EF /* bright_squares_@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bright_squares_@2X.png"; path = "../../Desktop/bright_squares_@2X.png"; sourceTree = "<group>"; };
+		AC63146C16C0078900ED25EF /* WhiteCarbon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = WhiteCarbon.jpg; path = ../../Desktop/WhiteCarbon.jpg; sourceTree = "<group>"; };
+		AC63147116C0145000ED25EF /* simpletexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = simpletexture.png; path = ../../Desktop/simpletexture.png; sourceTree = "<group>"; };
+		AC63147516C064DE00ED25EF /* stoff.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = stoff.jpg; path = ../../Desktop/stoff.jpg; sourceTree = "<group>"; };
+		AC63147616C064DE00ED25EF /* wood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wood.jpg; path = ../../Desktop/wood.jpg; sourceTree = "<group>"; };
+		AC63147716C064DE00ED25EF /* tumblr.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tumblr.jpg; path = ../../Desktop/tumblr.jpg; sourceTree = "<group>"; };
+		AC63147B16C0665100ED25EF /* matt_shadow2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = matt_shadow2.jpg; path = ../../Desktop/matt_shadow2.jpg; sourceTree = "<group>"; };
 		ACBD11E816A9F05B0049A569 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACBD11EC16A9F05B0049A569 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ACBD11EE16A9F05B0049A569 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -148,6 +160,12 @@
 		ACBD11F316A9F05B0049A569 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AC63147B16C0665100ED25EF /* matt_shadow2.jpg */,
+				AC63147516C064DE00ED25EF /* stoff.jpg */,
+				AC63147616C064DE00ED25EF /* wood.jpg */,
+				AC63147716C064DE00ED25EF /* tumblr.jpg */,
+				AC63147116C0145000ED25EF /* simpletexture.png */,
+				AC63146C16C0078900ED25EF /* WhiteCarbon.jpg */,
 				AC63146616BED06000ED25EF /* bright_squares_@2X.png */,
 				AC63146416BECE6D00ED25EF /* noisy_grid_@2X.png */,
 				AC63146016BECC5600ED25EF /* kindajean_@2X.png */,
@@ -273,6 +291,12 @@
 				AC63146116BECC5600ED25EF /* kindajean_@2X.png in Resources */,
 				AC63146516BECE6D00ED25EF /* noisy_grid_@2X.png in Resources */,
 				AC63146716BED06000ED25EF /* bright_squares_@2X.png in Resources */,
+				AC63146D16C0078900ED25EF /* WhiteCarbon.jpg in Resources */,
+				AC63147216C0145000ED25EF /* simpletexture.png in Resources */,
+				AC63147816C064DE00ED25EF /* stoff.jpg in Resources */,
+				AC63147916C064DE00ED25EF /* wood.jpg in Resources */,
+				AC63147A16C064DE00ED25EF /* tumblr.jpg in Resources */,
+				AC63147C16C0665100ED25EF /* matt_shadow2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
