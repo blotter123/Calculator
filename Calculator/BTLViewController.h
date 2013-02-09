@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface BTLViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *display;
+@property (weak, nonatomic) IBOutlet UILabel *historyDisplay;
+
+- (IBAction)equalPress:(UIButton *)sender;
 
 @end
