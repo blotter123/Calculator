@@ -48,6 +48,11 @@
     return _operator;
 }
 
+- (BTLInfixCalc *)test{
+    if (!_test) _test = [[BTLInfixCalc alloc] init];
+    return _test;
+}
+
 - (void) delIsResultIndicator; {
     
      NSString *sumSignLong = @" =";
@@ -175,7 +180,7 @@
 // IBActions for all the buttons
 
 - (IBAction)digitPress:(UIButton *)sender {
-    NSString* digit = [sender currentTitle];
+    NSMutableString* digit = [[NSMutableString alloc] initWithString:[sender currentTitle]];
     
     [self delIsResultIndicator];
     
@@ -184,18 +189,20 @@
     } else {
         if (self.userSelectedMinusBeforeEnteringADigit) {
             [self secureSetDisplayText:[@"-" stringByAppendingString:(digit)]];
+            [digit appendString:@"-"];
         } else {
             [self secureSetDisplayText:digit];
         }
         self.userIsInTheMiddleOfEnteringANumber = YES;
     }
-    
-    [self.test.workingString appendString:digit];
+    NSLog(@"the digit is %@", digit);
+    [self.test pushItem:digit];
 }
 
 
 
 - (IBAction)equalPress {
+    
     
     if (self.display.text) {
         
@@ -209,7 +216,9 @@
         }
     
     }
-  
+    
+    double result = [self.test doCalculation];
+    self.display.text = [NSString stringWithFormat:@"%lf", result] ;
 }
 
 
@@ -229,6 +238,9 @@
         self.display.text = (NSString *)resultObject;
     }
     [self setIsResultIndicator];
+     
+    //NSLog(@"the inArray length is %@", ]);
+    [self.test pushItem:operation];
 }
 
 
@@ -238,6 +250,7 @@
     self.userIsInTheMiddleOfEnteringANumber = NO;
     self.userSelectedMinusBeforeEnteringADigit = NO;
     [self.operator clearState];
+    [self.test clearState];
 }
 
 

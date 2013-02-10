@@ -10,14 +10,16 @@
 
 @interface BTLInfixCalc : NSObject
 
-@property (nonatomic, strong) NSMutableString *workingString;
+
 
 -(void)pushOperand:(double)operand;
+-(void)pushItem:(NSString*)x;
 -(void)clearState;
+-(int)inputLength;
 
 
 
 @property (readonly) id program;
-+ (id)runProgram:(id)program;
+- (double)doCalculation;
 
 @end

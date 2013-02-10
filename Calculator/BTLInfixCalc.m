@@ -14,6 +14,7 @@
 @property (nonatomic, strong)   NSMutableArray  *numberStack;
 @property (nonatomic, strong)   NSMutableArray  *inputArray;
 
++ (int) inputLength;
 + (int) encodeString:(NSString *) inputString;
 + (BOOL)stringIsOperation: (NSString*)inputString;
 
@@ -22,6 +23,10 @@
 @implementation BTLInfixCalc
 
 
+-(int)inputLength
+{
+    return [self.inputArray count];
+}
 
 - (NSMutableArray *) operatorStack{
     if (!_operatorStack){
@@ -30,7 +35,7 @@
     return _operatorStack;
 }
 
-- (NSMutableArray *) programStack{
+- (NSMutableArray *) numberStack{
     if (!_numberStack){
         _numberStack = [[NSMutableArray alloc] init];
     }
@@ -84,6 +89,12 @@
     
     return result;
 }
+
+-(void)pushItem: (NSString*) x
+{
+    [self.inputArray addObject:x];
+}
+
 
 - (void)pushOperand: (double) operand
 {
@@ -139,15 +150,19 @@
 {
     while ([operationsStack count] > 0) {
         NSString* operation = [self popOperator:operationsStack];
+        NSLog(@"operation is %@", operation);
+        NSLog(@"top of operands stack is %@", operandsStack.lastObject);
         NSNumber* operand2 = [self popOperand:operandsStack];
+        NSLog(@"operand2 is %@", operand2);
         NSNumber* operand1 = [self popOperand:operandsStack];
+        NSLog(@"operand1 is %@", operand1);
         NSNumber* tempResult = 0;
         if ([operation isEqualToString:@"+"]) {
-            tempResult = [NSNumber numberWithDouble:([operand1 doubleValue] + [operand2 doubleValue])];
+            tempResult = [NSNumber numberWithDouble:([operand2 doubleValue] + [operand1 doubleValue])];
         } else if ([@"*" isEqualToString:operation]) {
-            tempResult = [NSNumber numberWithDouble:([operand1 doubleValue] * [operand2 doubleValue])];
+            tempResult = [NSNumber numberWithDouble:([operand2 doubleValue] * [operand1 doubleValue])];
         } else if ([@"-" isEqualToString:operation]) {
-            tempResult = [NSNumber numberWithDouble:([operand1 doubleValue] - [operand2 doubleValue])];
+            tempResult = [NSNumber numberWithDouble:([operand2 doubleValue] - [operand1 doubleValue])];
         } else if ([@"/" isEqualToString:operation]) {
             if ([operand1 doubleValue] != 0) {
                 tempResult = [NSNumber numberWithDouble:([operand2 doubleValue] / [operand1 doubleValue])];
@@ -157,6 +172,7 @@
     }
     NSNumber* lastObject = [operandsStack lastObject];
     [operandsStack removeLastObject];
+    NSLog(@"end result is %@", lastObject);
     return [lastObject doubleValue];
     
 }
@@ -167,8 +183,9 @@
                                                            by: (NSMutableArray*)operStack
 {
     
-    for (int i = inArray.count; i>=0; i--) {
+    for (int i = (inArray.count -1); i>=0; i--) {
         NSString* currObject = [inArray objectAtIndex:i];
+        NSLog(@"the current object is%@", currObject);
         if ([self stringIsOperation:currObject]) {
             if ([operStack count] != 0 || [self priorityOfOperandByString:currObject] < [self priorityOfOperandByString:[operStack lastObject]]) {
                 NSString* operation = [self popOperator:operStack];
@@ -193,7 +210,8 @@
                 [operStack addObject:(id)currObject];
             }
         } else {
-            [numStack addObject:(id) currObject];
+            NSLog(@"number added to numstack %@", currObject);
+            [numStack addObject:(id)currObject];
         }
     }
 
@@ -204,9 +222,20 @@
 
 - (void) clearState
 {
-    [self.inputArray.removeAllObjects];
-    [self.operatorStack.removeAllObjects];
-    [self.numberStack.removeAllObjects];
+    [self.inputArray removeAllObjects];
+    [self.operatorStack removeAllObjects];
+    [self.numberStack removeAllObjects];
+    
+}
+
+
+- (double)doCalculation
+{
+    NSMutableArray* opStack = [self operatorStack];
+    NSMutableArray* numStack = [self numberStack];
+    NSMutableArray* inArray = [self inputArray];
+    double result = [BTLInfixCalc computeResult: inArray computedInto: numStack by: opStack];
+    return result;
     
 }
 
