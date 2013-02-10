@@ -18,7 +18,7 @@
 
 @property (readonly) id program;
 
-+ (id)runProgram:(id)program; //doesn't calculate Variables
++ (id)runProgram:(id)program; 
 
 + (NSString *)descriptionOfProgram:(id)program;
 

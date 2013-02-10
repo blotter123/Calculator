@@ -8,10 +8,12 @@
 
 #import "BTLViewController.h"
 #import "BTLCalcCore.h"
+#import "BTLInfixCalc.h"
 
 @interface BTLViewController ()
 
 @property (nonatomic, strong) BTLCalcCore *operator;
+@property (nonatomic, strong) BTLInfixCalc *test;
 @property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
 @property (nonatomic) BOOL userSelectedMinusBeforeEnteringADigit;
 
@@ -47,23 +49,23 @@
 }
 
 - (void) delIsResultIndicator; {
-    /*
+    
      NSString *sumSignLong = @" =";
      NSRange posOfSumSign = [self.historyDisplay.text rangeOfString:sumSignLong];
      if (posOfSumSign.location != NSNotFound) {
      self.historyDisplay.text = [self.historyDisplay.text substringToIndex:posOfSumSign.location];
      }
-     */
+     
 }
 
 - (void) setIsResultIndicator; {
-    /*
+    
      NSString *sumSignLong = @" =";
      NSRange posOfSumSign = [self.historyDisplay.text rangeOfString:sumSignLong];
      if (posOfSumSign.location == NSNotFound) {
      self.historyDisplay.text = [self.historyDisplay.text stringByAppendingString: sumSignLong];
      }
-     */
+     
 }
 
 
@@ -173,7 +175,7 @@
 // IBActions for all the buttons
 
 - (IBAction)digitPress:(UIButton *)sender {
-    NSString *digit = [sender currentTitle];
+    NSString* digit = [sender currentTitle];
     
     [self delIsResultIndicator];
     
@@ -187,11 +189,14 @@
         }
         self.userIsInTheMiddleOfEnteringANumber = YES;
     }
+    
+    [self.test.workingString appendString:digit];
 }
 
 
 
 - (IBAction)equalPress {
+    
     if (self.display.text) {
         
         if ([self.display.text rangeOfString:@"Error"].location == NSNotFound ) {
@@ -204,6 +209,7 @@
         }
     
     }
+  
 }
 
 

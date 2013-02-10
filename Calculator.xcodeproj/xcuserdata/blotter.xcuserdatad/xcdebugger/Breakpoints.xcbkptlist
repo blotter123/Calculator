@@ -47,13 +47,26 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Calculator/BTLViewController.m"
-         timestampString = "382117159.613137"
+         timestampString = "382146536.592323"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "214"
-         endingLineNumber = "214"
+         startingLineNumber = "222"
+         endingLineNumber = "222"
          landmarkName = "-operationPress:"
          landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Calculator/BTLViewController.m"
+         timestampString = "382155550.853365"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "24"
+         endingLineNumber = "24"
+         landmarkName = "@implementation BTLViewController"
+         landmarkType = "3">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
