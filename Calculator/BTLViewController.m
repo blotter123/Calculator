@@ -54,23 +54,23 @@
 }
 
 - (void) delIsResultIndicator; {
-    
+    /*
      NSString *sumSignLong = @" =";
      NSRange posOfSumSign = [self.historyDisplay.text rangeOfString:sumSignLong];
      if (posOfSumSign.location != NSNotFound) {
      self.historyDisplay.text = [self.historyDisplay.text substringToIndex:posOfSumSign.location];
      }
-     
+     */
 }
 
 - (void) setIsResultIndicator; {
-    
+    /*
      NSString *sumSignLong = @" =";
      NSRange posOfSumSign = [self.historyDisplay.text rangeOfString:sumSignLong];
      if (posOfSumSign.location == NSNotFound) {
      self.historyDisplay.text = [self.historyDisplay.text stringByAppendingString: sumSignLong];
      }
-     
+     */
 }
 
 
@@ -114,6 +114,7 @@
                     workDisplayString = [workDisplayString stringByAppendingString:@"-"];
                 } else if (!stateMinus) {
                     workDisplayString = [@"-" stringByAppendingString:workDisplayString];
+                    self.userSelectedMinusBeforeEnteringADigit = YES;
                     stateMinus = YES;
                 };
             }
@@ -188,8 +189,10 @@
         [self secureSetDisplayText:([self.display.text stringByAppendingString:digit])];
     } else {
         if (self.userSelectedMinusBeforeEnteringADigit) {
+            NSLog(@"branch to userSelectedMinus");
+            digit = [NSString stringWithFormat:@"-%@",digit];
             [self secureSetDisplayText:[@"-" stringByAppendingString:(digit)]];
-            [digit appendString:@"-"];
+                        //[digit appendString:@"-"];
         } else {
             [self secureSetDisplayText:digit];
         }
@@ -226,9 +229,18 @@
 - (IBAction)operationPress:(UIButton *)sender {
     
     [self delIsResultIndicator];
+   
     if (self.userIsInTheMiddleOfEnteringANumber) [self equalPress];
     NSString *operation = sender.currentTitle;
+    if (([operation isEqualToString:@"-"]) && ([self.display.text isEqualToString:@""])){
+        self.userSelectedMinusBeforeEnteringADigit = YES;
+    }
+    else{
+        [self.test pushItem:operation];
+    }
     
+    
+    /*
     id resultObject = [self.operator   doOperation:operation];
     self.historyDisplay.text = [BTLCalcCore descriptionOfProgram:self.operator.program];
     
@@ -238,9 +250,11 @@
         self.display.text = (NSString *)resultObject;
     }
     [self setIsResultIndicator];
+     */
      
     //NSLog(@"the inArray length is %@", ]);
-    [self.test pushItem:operation];
+    
+    
 }
 
 
