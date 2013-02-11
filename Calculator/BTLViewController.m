@@ -95,9 +95,11 @@
     
     if (self.display.text) {
         NSLog(@"workingString is %@",self.workingString);
+        
         [self.test pushItem:self.workingString];
         NSLog(@"test");
         double result = [self.test doCalculation];
+        self.test.inputArray.removeAllObjects;
         self.workingString = [NSMutableString stringWithString:[NSString stringWithFormat:@"%f",result]];
         [self.test pushOperand:result];
         self.display.text = [NSString stringWithFormat:@"%lf", result];
@@ -118,9 +120,12 @@
         self.userSelectedMinusBeforeEnteringADigit = YES;
     }
     else{
+        NSLog(@"branch test 2");
         [self.display.text stringByAppendingString:operation];
-        [self.test pushItem:operation];
+        NSLog(@"workingString is %@",self.workingString);
         [self.test pushItem:self.workingString];
+        [self.test pushItem:operation];
+        
         self.workingString = [NSMutableString stringWithString:@""];
         
     }

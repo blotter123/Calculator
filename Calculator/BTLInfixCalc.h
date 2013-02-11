@@ -17,6 +17,7 @@
 -(void)clearState;
 -(int)inputLength;
 
+@property (nonatomic, strong)   NSMutableArray  *inputArray;
 
 
 @property (readonly) id program;
