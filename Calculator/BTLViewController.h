@@ -12,8 +12,12 @@
 @interface BTLViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *display;
-@property (weak, nonatomic) IBOutlet UILabel *historyDisplay;
 
 - (IBAction)equalPress:(UIButton *)sender;
+- (IBAction)digitPress:(UIButton *)sender;
+- (IBAction)equalPress;
+- (IBAction)operationPress:(UIButton *)sender;
+- (IBAction)clearPress:(UIButton *)sender;
+- (IBAction)decimalPress:(UIButton *)sender;
 
 @end

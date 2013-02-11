@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Calculator/BTLViewController.h"
-         timestampString = "382117159.613137"
+         timestampString = "382240381.423152"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "19"
-         endingLineNumber = "19"
+         startingLineNumber = "23"
+         endingLineNumber = "23"
          landmarkName = "@interface BTLViewController"
          landmarkType = "2">
       </FileBreakpoint>
@@ -47,20 +47,20 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Calculator/BTLViewController.m"
-         timestampString = "382203901.083806"
+         timestampString = "382253671.720165"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "242"
-         endingLineNumber = "242"
+         startingLineNumber = "127"
+         endingLineNumber = "127"
          landmarkName = "-operationPress:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Calculator/BTLViewController.m"
-         timestampString = "382155550.853365"
+         timestampString = "382244607.958437"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "24"
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Calculator/BTLInfixCalc.m"
-         timestampString = "382198697.443557"
+         timestampString = "382253418.483662"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "225"
-         endingLineNumber = "225"
+         startingLineNumber = "243"
+         endingLineNumber = "243"
          landmarkName = "-clearState"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Calculator/BTLViewController.m"
-         timestampString = "382203901.083806"
+         timestampString = "382246794.615033"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "202"
-         endingLineNumber = "202"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
          landmarkName = "-digitPress:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,25 +99,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Calculator/BTLInfixCalc.m"
-         timestampString = "382198697.443557"
+         timestampString = "382253418.483662"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "236"
-         endingLineNumber = "236"
+         startingLineNumber = "254"
+         endingLineNumber = "254"
          landmarkName = "-doCalculation"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Calculator/BTLViewController.m"
-         timestampString = "382203901.083806"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "255"
-         endingLineNumber = "255"
-         landmarkName = "-operationPress:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

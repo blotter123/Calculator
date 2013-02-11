@@ -12,20 +12,20 @@
 
 @interface BTLViewController ()
 
-@property (nonatomic, strong) BTLCalcCore *operator;
 @property (nonatomic, strong) BTLInfixCalc *test;
 @property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
 @property (nonatomic) BOOL userSelectedMinusBeforeEnteringADigit;
+@property (nonatomic) BOOL decimalState;
+@property (nonatomic) NSMutableString* workingString;
 
-+ (void)setCalculatorBrainAndState:(BTLViewController *)destinationViewController calCore:(id)oper isInTheMiddleOfEnteringANumber:(BOOL)stateEntering selectedMinusBeforeEnteringADigit:(BOOL)stateMinus;
 
 @end
 
 @implementation BTLViewController
 
-@synthesize historyDisplay = _historyDisplay;
 @synthesize userIsInTheMiddleOfEnteringANumber = _userIsInTheMiddleOfEnteringANumber;
 @synthesize userSelectedMinusBeforeEnteringADigit = _userSelectedMinusBeforeEnteringADigit;
+@synthesize workingString = _workingString;
 
 
 - (void)viewDidLoad
@@ -34,6 +34,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"matt_shadow2.jpg"]];
+    self.userIsInTheMiddleOfEnteringANumber = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,137 +44,19 @@
 }
 
 
-- (BTLCalcCore *)operator {
-    if (!_operator) _operator = [[BTLCalcCore alloc] init];
-    return _operator;
-}
+
 
 - (BTLInfixCalc *)test{
     if (!_test) _test = [[BTLInfixCalc alloc] init];
     return _test;
 }
 
-- (void) delIsResultIndicator; {
-    /*
-     NSString *sumSignLong = @" =";
-     NSRange posOfSumSign = [self.historyDisplay.text rangeOfString:sumSignLong];
-     if (posOfSumSign.location != NSNotFound) {
-     self.historyDisplay.text = [self.historyDisplay.text substringToIndex:posOfSumSign.location];
-     }
-     */
-}
 
-- (void) setIsResultIndicator; {
-    /*
-     NSString *sumSignLong = @" =";
-     NSRange posOfSumSign = [self.historyDisplay.text rangeOfString:sumSignLong];
-     if (posOfSumSign.location == NSNotFound) {
-     self.historyDisplay.text = [self.historyDisplay.text stringByAppendingString: sumSignLong];
-     }
-     */
-}
-
-
-
-- (void) secureSetDisplayText:(NSString *)newDisplayString {
-    NSString *workDisplayString = @"";
-    NSString *zeroString = @"0";
-    NSUInteger index;
-    BOOL stateMinus = NO;   //change to YES at the 1st occurance of "-"
-    BOOL stateDecimal = NO; //change to YES at the 1st occurance of period
-    BOOL stateFreeShotforZeroAllowed = NO; //change to YES at period or 1st occurance of digit >=1
-    BOOL stateExponential = NO; //change to YES at 1st occurance of "e"
-    NSString *curCharString = @"";
-    NSString *prevCharString = @"";
-    NSRange curRange;
-    NSString *digitString = @"0123456789einf"; //allow "e" for operation results w/ large values
-    
-    
-    //Check if newDisplayString is nil
-    if (!newDisplayString) {
-        workDisplayString = zeroString;
-        
-        //Check if newDisplayString is empty
-    } else if ([newDisplayString isEqualToString:@""]) {
-        workDisplayString = zeroString;
-        
-        //**From now on, newDisplayString is NOT empty
-    } else {
-        for (index = 0; index <= ([newDisplayString length]-1); index++) {
-            prevCharString = curCharString;
-            curRange.length = 1;
-            curRange.location = index;
-            curCharString = [newDisplayString substringWithRange:curRange];
-            
-            //NSLog(@"Index=%i, curCharString=%@, prevCharString=%@", index, curCharString, prevCharString);
-            
-            //Check "-"
-            if ([curCharString isEqualToString:@"-"]) {
-                
-                if (stateExponential) {
-                    workDisplayString = [workDisplayString stringByAppendingString:@"-"];
-                } else if (!stateMinus) {
-                    workDisplayString = [@"-" stringByAppendingString:workDisplayString];
-                    self.userSelectedMinusBeforeEnteringADigit = YES;
-                    stateMinus = YES;
-                };
-            }
-            
-            // Check period
-            else if ([curCharString isEqualToString:@"."]) {
-                if (!stateDecimal) {
-                    if ([digitString rangeOfString:prevCharString].location == NSNotFound) {
-                        workDisplayString = [workDisplayString stringByAppendingString:@"0."];
-                    } else {
-                        workDisplayString = [workDisplayString stringByAppendingString:@"."];
-                    }
-                    stateDecimal = YES;
-                    stateFreeShotforZeroAllowed = YES;
-                    
-                }
-            }
-            
-            // Check digits with "zero-handling"
-            //
-            else if ([digitString rangeOfString:curCharString].location != NSNotFound) {
-                if (stateFreeShotforZeroAllowed) {
-                    workDisplayString = [workDisplayString stringByAppendingString:curCharString];
-                } else {
-                    if ([prevCharString isEqualToString:@"0"]) {
-                        workDisplayString = [[workDisplayString substringToIndex:([workDisplayString length]-1)] stringByAppendingString:curCharString];
-                    } else {
-                        workDisplayString = [workDisplayString stringByAppendingString:curCharString];
-                    };
-                    if (![curCharString isEqualToString:@"0"]) {
-                        stateFreeShotforZeroAllowed = YES;
-                    }
-                }
-                
-                if ([curCharString isEqualToString:@"e"]) {
-                    stateExponential = YES;
-                    stateFreeShotforZeroAllowed = YES;
-                }
-            }
-        }
+- (NSMutableString *)workingString{
+    if (!_workingString) {
+        _workingString = [[NSMutableString alloc] init];
     }
-    
-    //last check of workDisplayString
-    if ([workDisplayString isEqualToString:@"-"]) {
-        workDisplayString = @"-0";
-    }
-    
-    //assign to display.text
-    
-    self.display.text = workDisplayString;
-    
-    //correct state information
-    
-    if ([workDisplayString isEqualToString:@"0"]) {
-        self.userIsInTheMiddleOfEnteringANumber = NO;
-    } else if ([workDisplayString isEqualToString:@"-0"]) {
-        self.userIsInTheMiddleOfEnteringANumber = NO;
-    }
-    
+    return _workingString;
 }
 
 
@@ -181,78 +64,66 @@
 // IBActions for all the buttons
 
 - (IBAction)digitPress:(UIButton *)sender {
-    NSMutableString* digit = [[NSMutableString alloc] initWithString:[sender currentTitle]];
-    
-    [self delIsResultIndicator];
     
     if (self.userIsInTheMiddleOfEnteringANumber) {
-        [self secureSetDisplayText:([self.display.text stringByAppendingString:digit])];
+    NSMutableString* digit = [[NSMutableString alloc] initWithString:[sender currentTitle]];
+    [self.workingString appendString:digit];
+    }
+    
+    /*
+    NSMutableString* digit = [[NSMutableString alloc] initWithString:[sender currentTitle]];
+    if (self.userIsInTheMiddleOfEnteringANumber) {
+        [self.workingString appendString:digit];
     } else {
         if (self.userSelectedMinusBeforeEnteringADigit) {
             NSLog(@"branch to userSelectedMinus");
             digit = [NSString stringWithFormat:@"-%@",digit];
-            [self secureSetDisplayText:[@"-" stringByAppendingString:(digit)]];
-                        //[digit appendString:@"-"];
         } else {
-            [self secureSetDisplayText:digit];
+            self.display.text = digit;
         }
         self.userIsInTheMiddleOfEnteringANumber = YES;
     }
     NSLog(@"the digit is %@", digit);
     [self.test pushItem:digit];
+     
+     */
 }
 
 
 
 - (IBAction)equalPress {
     
-    
     if (self.display.text) {
-        
-        if ([self.display.text rangeOfString:@"Error"].location == NSNotFound ) {
-            [self.operator pushOperand:[self.display.text doubleValue]];
-            self.userIsInTheMiddleOfEnteringANumber = NO;
-            self.userSelectedMinusBeforeEnteringADigit = NO;
-            
-            [self delIsResultIndicator];
-            self.historyDisplay.text = [BTLCalcCore descriptionOfProgram:self.operator.program];
-        }
-    
+        [self.test pushItem:self.workingString];
+        NSLog(@"test");
+        double result = [self.test doCalculation];
+        self.workingString = [NSMutableString stringWithString:[NSString stringWithFormat:@"%f",result]];
+        [self.test pushOperand:result];
+        self.display.text = [NSString stringWithFormat:@"%lf", result];
     }
     
-    double result = [self.test doCalculation];
-    self.display.text = [NSString stringWithFormat:@"%lf", result] ;
+    
 }
 
 
 
 - (IBAction)operationPress:(UIButton *)sender {
     
-    [self delIsResultIndicator];
-   
-    if (self.userIsInTheMiddleOfEnteringANumber) [self equalPress];
+    
+    if (self.userIsInTheMiddleOfEnteringANumber){
     NSString *operation = sender.currentTitle;
-    if (([operation isEqualToString:@"-"]) && ([self.display.text isEqualToString:@""])){
+    if (([operation isEqualToString:@"-"]) && ([self.workingString isEqualToString:@""])){
+        [self.workingString appendString:@"-"];
         self.userSelectedMinusBeforeEnteringADigit = YES;
     }
     else{
+        [self.display.text stringByAppendingString:operation];
         [self.test pushItem:operation];
+        [self.test pushItem:self.workingString];
+        self.workingString = [NSMutableString stringWithString:@""];
+        
     }
-    
-    
-    /*
-    id resultObject = [self.operator   doOperation:operation];
-    self.historyDisplay.text = [BTLCalcCore descriptionOfProgram:self.operator.program];
-    
-       if ([resultObject isKindOfClass:[NSNumber class]]) {
-        [self secureSetDisplayText:([NSString stringWithFormat:@"%g", [(NSNumber *)resultObject doubleValue]])];
-    } else if ([resultObject isKindOfClass:[NSString class]]) {
-        self.display.text = (NSString *)resultObject;
     }
-    [self setIsResultIndicator];
-     */
-     
-    //NSLog(@"the inArray length is %@", ]);
     
     
 }
@@ -261,9 +132,9 @@
 - (IBAction)clearPress:(UIButton *)sender {
     
     self.display.text = @"0";
-    self.userIsInTheMiddleOfEnteringANumber = NO;
+    //self.userIsInTheMiddleOfEnteringANumber = NO;
     self.userSelectedMinusBeforeEnteringADigit = NO;
-    [self.operator clearState];
+    self.workingString = [NSMutableString stringWithString:@""];
     [self.test clearState];
 }
 
@@ -271,27 +142,29 @@
 
 - (IBAction)decimalPress:(UIButton *)sender {
     
+    [self.display.text stringByAppendingString:@"."];
+    [self.workingString appendString:@"."];
+    self.decimalState = YES;
+    self.userIsInTheMiddleOfEnteringANumber = YES;
+    
+    
+    /*
     if (self.userIsInTheMiddleOfEnteringANumber) {
-        [self secureSetDisplayText:([self.display.text stringByAppendingString:@"."])];
+        // [self secureSetDisplayText:([self.display.text stringByAppendingString:@"."])];
+        [self.display.text stringByAppendingString:@"."];
+        [self.workingString appendString:@"."];
     } else {
         if (self.userSelectedMinusBeforeEnteringADigit) {
-            [self secureSetDisplayText:@"-."];
+            // [self secureSetDisplayText:@"-."];
+            [self.workingString appendString:@"-."];
         } else {
-            [self secureSetDisplayText:@"."];
-            
+            // [self secureSetDisplayText:@"."];
         }
         self.userIsInTheMiddleOfEnteringANumber = YES;
-        [self delIsResultIndicator];
+        
     }
-
-}
-
-+ (void)setCalculatorBrainAndState:(BTLViewController *)destinationViewController calcCore:(id)oper isInTheMiddleOfEnteringANumber:(BOOL)stateEntering selectedMinusBeforeEnteringADigit:(BOOL)stateMinus {
-    if (destinationViewController) {
-        if (oper) destinationViewController.operator = oper;
-        destinationViewController.userIsInTheMiddleOfEnteringANumber = stateEntering;
-        destinationViewController.userSelectedMinusBeforeEnteringADigit = stateMinus;
-    }
+     */
+    
 }
 
 
