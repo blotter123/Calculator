@@ -155,13 +155,13 @@
 {
     while ([operationsStack count] > 0) {
         NSString* operation = [self popOperator:operationsStack];
-        //NSLog(@"operation is %@", operation);
-        //NSLog(@"top of operands stack is %@", operandsStack.lastObject);
-        NSNumber* operand2 = [self popOperand:operandsStack];
-        //NSLog(@"operand2 is %@", operand2);
+        NSLog(@"operation is %@", operation);
         NSLog(@"top of operands stack is %@", operandsStack.lastObject);
         NSNumber* operand1 = [self popOperand:operandsStack];
-        //NSLog(@"operand1 is %@", operand1);
+        //NSLog(@"operand2 is %@", operand2);
+        NSLog(@"top of operands stack is %@", operandsStack.lastObject);
+        NSNumber* operand2 = [self popOperand:operandsStack];
+        NSLog(@"operand1 is %@", operand1);
         NSNumber* tempResult = 0;
         if ([operation isEqualToString:@"+"]) {
             tempResult = [NSNumber numberWithDouble:([operand1 doubleValue] + [operand2 doubleValue])];
@@ -214,17 +214,18 @@
     }
     
     
+    for (int i = ([inArray count]-1); i>=0; i--) {
     
-    for (int i = 0 ; i<(inArray.count); i++) {
+    //for (int i = 0 ; i<(inArray.count); i++) {
         NSString* currObject = [inArray objectAtIndex:i];
         //NSLog(@"the current object is%@", currObject);
         if ([self stringIsOperation:currObject]) {
             if ([operStack count] != 0 || ([self priorityOfOperandByString:currObject] < [self priorityOfOperandByString:[operStack lastObject]])) {
                 NSString* operation = [self popOperator:operStack];
                 NSLog(@"top of operands stack is %@", operStack.lastObject);
-                NSNumber* operand2 = [self popOperand:numStack];
-                NSLog(@"top of operands stack is %@", operStack.lastObject);
                 NSNumber* operand1 = [self popOperand:numStack];
+                NSLog(@"top of operands stack is %@", operStack.lastObject);
+                NSNumber* operand2 = [self popOperand:numStack];
                 NSNumber* tempResult = 0;
                 
                 if ([operation isEqualToString:@"+"]) {
