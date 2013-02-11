@@ -3,6 +3,30 @@ Name: Benedikt Lotter
 
 
 
+
+Homework 01.c
+
+Outside resources used:
+
+- a lot of stack-overflow
+- a high level description of the algorithm for infix parsing: 
+http://www.smccd.net/accounts/hasson/C++2Notes/ArithmeticParsing.html
+- piazza discussion of Stanford course "coding together for iOS"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Homework 01.a
 Calculator Prep
 

@@ -69,24 +69,7 @@
     NSMutableString* digit = [[NSMutableString alloc] initWithString:[sender currentTitle]];
     [self.workingString appendString:digit];
     }
-    
-    /*
-    NSMutableString* digit = [[NSMutableString alloc] initWithString:[sender currentTitle]];
-    if (self.userIsInTheMiddleOfEnteringANumber) {
-        [self.workingString appendString:digit];
-    } else {
-        if (self.userSelectedMinusBeforeEnteringADigit) {
-            NSLog(@"branch to userSelectedMinus");
-            digit = [NSString stringWithFormat:@"-%@",digit];
-        } else {
-            self.display.text = digit;
-        }
-        self.userIsInTheMiddleOfEnteringANumber = YES;
-    }
-    NSLog(@"the digit is %@", digit);
-    [self.test pushItem:digit];
-     
-     */
+   
 }
 
 
@@ -94,12 +77,9 @@
 - (IBAction)equalPress {
     
     if (self.display.text) {
-        NSLog(@"workingString is %@",self.workingString);
-        
         [self.test pushItem:self.workingString];
-        NSLog(@"test");
         double result = [self.test doCalculation];
-        self.test.inputArray.removeAllObjects;
+        [self.test.inputArray removeAllObjects];
         self.workingString = [NSMutableString stringWithString:[NSString stringWithFormat:@"%f",result]];
         [self.test pushOperand:result];
         self.display.text = [NSString stringWithFormat:@"%lf", result];
@@ -120,9 +100,7 @@
         self.userSelectedMinusBeforeEnteringADigit = YES;
     }
     else{
-        NSLog(@"branch test 2");
         [self.display.text stringByAppendingString:operation];
-        NSLog(@"workingString is %@",self.workingString);
         [self.test pushItem:self.workingString];
         [self.test pushItem:operation];
         
@@ -138,7 +116,6 @@
 - (IBAction)clearPress:(UIButton *)sender {
     
     self.display.text = @"0";
-    //self.userIsInTheMiddleOfEnteringANumber = NO;
     self.userSelectedMinusBeforeEnteringADigit = NO;
     self.workingString = [NSMutableString stringWithString:@""];
     [self.test clearState];
@@ -152,25 +129,7 @@
     [self.workingString appendString:@"."];
     self.decimalState = YES;
     self.userIsInTheMiddleOfEnteringANumber = YES;
-    
-    
-    /*
-    if (self.userIsInTheMiddleOfEnteringANumber) {
-        // [self secureSetDisplayText:([self.display.text stringByAppendingString:@"."])];
-        [self.display.text stringByAppendingString:@"."];
-        [self.workingString appendString:@"."];
-    } else {
-        if (self.userSelectedMinusBeforeEnteringADigit) {
-            // [self secureSetDisplayText:@"-."];
-            [self.workingString appendString:@"-."];
-        } else {
-            // [self secureSetDisplayText:@"."];
-        }
-        self.userIsInTheMiddleOfEnteringANumber = YES;
-        
-    }
-     */
-    
+
 }
 
 
