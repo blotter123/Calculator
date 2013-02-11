@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC08FB1B16C40F4C00DFA469 /* BTLCalcCore.m in Sources */ = {isa = PBXBuildFile; fileRef = AC08FB1A16C40F4C00DFA469 /* BTLCalcCore.m */; };
 		AC08FB2316C70AE400DFA469 /* BTLInfixCalc.m in Sources */ = {isa = PBXBuildFile; fileRef = AC08FB2216C70AE400DFA469 /* BTLInfixCalc.m */; };
 		AC63145216BEB22600ED25EF /* furley_bg_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = AC63145116BEB22600ED25EF /* furley_bg_@2X.png */; };
 		AC63145516BEB23700ED25EF /* lghtmesh_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = AC63145416BEB23700ED25EF /* lghtmesh_@2X.png */; };
@@ -53,8 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AC08FB1916C40F4C00DFA469 /* BTLCalcCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTLCalcCore.h; sourceTree = "<group>"; };
-		AC08FB1A16C40F4C00DFA469 /* BTLCalcCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTLCalcCore.m; sourceTree = "<group>"; };
 		AC08FB2116C70AE400DFA469 /* BTLInfixCalc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTLInfixCalc.h; sourceTree = "<group>"; };
 		AC08FB2216C70AE400DFA469 /* BTLInfixCalc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTLInfixCalc.m; sourceTree = "<group>"; };
 		AC63145116BEB22600ED25EF /* furley_bg_@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "furley_bg_@2X.png"; path = "../../Downloads/furley_bg/furley_bg_@2X.png"; sourceTree = "<group>"; };
@@ -159,8 +156,6 @@
 				ACBD120716A9F05B0049A569 /* BTLViewController.h */,
 				ACBD120816A9F05B0049A569 /* BTLViewController.m */,
 				ACBD11F316A9F05B0049A569 /* Supporting Files */,
-				AC08FB1916C40F4C00DFA469 /* BTLCalcCore.h */,
-				AC08FB1A16C40F4C00DFA469 /* BTLCalcCore.m */,
 				AC08FB2116C70AE400DFA469 /* BTLInfixCalc.h */,
 				AC08FB2216C70AE400DFA469 /* BTLInfixCalc.m */,
 			);
@@ -344,7 +339,6 @@
 				ACBD11F916A9F05B0049A569 /* main.m in Sources */,
 				ACBD11FD16A9F05B0049A569 /* BTLAppDelegate.m in Sources */,
 				ACBD120916A9F05B0049A569 /* BTLViewController.m in Sources */,
-				AC08FB1B16C40F4C00DFA469 /* BTLCalcCore.m in Sources */,
 				AC08FB2316C70AE400DFA469 /* BTLInfixCalc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
