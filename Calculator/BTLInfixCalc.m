@@ -174,11 +174,12 @@
             }
             
         }
+        NSLog(@"current result is %@", tempResult);
         [operandsStack addObject: (id)tempResult];
     }
     
     NSNumber* lastObject = [operandsStack lastObject];
-    [operandsStack removeLastObject];
+    //[operandsStack removeLastObject];
     NSLog(@"end result is %@", lastObject);
     NSLog(@"operandStack length %u", [operandsStack count]);
     NSLog(@"operationsStack length %u", [operationsStack count]);
@@ -222,6 +223,7 @@
                 [operStack addObject:(id)currObject];
                 
             } else {
+                NSLog(@"branch test %@", currObject);
                 [operStack addObject:(id)currObject];
             }
         } else {
@@ -249,11 +251,13 @@
 
 - (double)doCalculation
 {
+    NSLog(@"when starting the calculation, the operandStack length %u", [self.numberStack count]);
     //NSMutableArray* opStack = [self operatorStack];
     //NSMutableArray* numStack = [self numberStack];
     //NSMutableArray* inArray = [self inputArray];
     double result = [BTLInfixCalc computeResult: self.inputArray computedInto: self.numberStack by: self.operatorStack];
     return result;
+    [self.inputArray removeAllObjects];
 }
 
 
