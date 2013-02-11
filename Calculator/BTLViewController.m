@@ -94,6 +94,7 @@
 - (IBAction)equalPress {
     
     if (self.display.text) {
+        NSLog(@"workingString is %@",self.workingString);
         [self.test pushItem:self.workingString];
         NSLog(@"test");
         double result = [self.test doCalculation];

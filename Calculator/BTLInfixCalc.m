@@ -203,13 +203,13 @@
                 NSNumber* operand1 = [self popOperand:numStack];
                 NSNumber* tempResult = 0;
                 
-                //if ([operation isEqualToString:@"+"]) {
-                   // tempResult = [NSNumber numberWithDouble:([operand2 doubleValue] + [operand1 doubleValue])];
-                //} else
+                if ([operation isEqualToString:@"+"]) {
+                   tempResult = [NSNumber numberWithDouble:([operand2 doubleValue] + [operand1 doubleValue])];
+                } else
                     if ([@"*" isEqualToString:operation]) {
                     tempResult = [NSNumber numberWithDouble:([operand2 doubleValue] * [operand1 doubleValue])];
-                //} else if ([@"-" isEqualToString:operation]) {
-                   // tempResult = [NSNumber numberWithDouble:([operand2 doubleValue] - [operand1 doubleValue])];
+                } else if ([@"-" isEqualToString:operation]) {
+                   tempResult = [NSNumber numberWithDouble:([operand2 doubleValue] - [operand1 doubleValue])];
                 }
                     else if ([@"/" isEqualToString:operation]) {
                     if ([operand1 doubleValue] != 0) {
