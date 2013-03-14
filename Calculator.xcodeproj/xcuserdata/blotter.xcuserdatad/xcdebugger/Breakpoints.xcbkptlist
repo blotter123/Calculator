@@ -91,7 +91,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "260"
          endingLineNumber = "260"
-         landmarkName = "-doCalculation"
+         landmarkName = "+computeResult:computedInto:by:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
